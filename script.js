@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         BetterPlayground
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/Heath123/
 // @version      0.1
 // @description  Adds features such as logit bias to the OpenAI Playground
-// @author       You
+// @author       Heath123
 // @match        https://beta.openai.com/playground*
 // @icon         https://www.google.com/s2/favicons?domain=openai.com
 // @grant        GM.xmlHttpRequest

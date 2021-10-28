@@ -7,6 +7,7 @@
 // @match        https://beta.openai.com/playground*
 // @icon         https://www.google.com/s2/favicons?domain=openai.com
 // @grant        GM.xmlHttpRequest
+// @connect      openaiapi-site.azureedge.net
 // @run-at       document-start
 // ==/UserScript==
 

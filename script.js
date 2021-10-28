@@ -14,7 +14,7 @@
 // to make this easy to understand, even though it's a bit of a mess.
 
 // Inject custom styling to make the normal editor that supports logprobs look like
-// the code editor when using Codex model
+// the code editor when using Codex models
 const style = document.createElement('style')
 style.innerHTML = `
 body.betterplayground-using-code-model .completions-container * {
@@ -110,7 +110,7 @@ window.addEventListener("load", () => {
         clearInterval(interval)
         console.log("BetterPlayground: Injecting custom controls")
 
-        // Wrap certain functions
+        // Wrap the onModelParamChange to update styles
         const oldOnModelParamChange = unsafeWindow.globalThing.onModelParamChange
 
         function updateStyle (modelName) {

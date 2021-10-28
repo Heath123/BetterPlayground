@@ -22,7 +22,7 @@ Note that this disables all code editing fetaures like syntax highlighing and li
 
 # Why not just provide feedback?
 
-Well, tjhis way people can see how it would work, and I do't have to wait. Also this is more fun.
+Well, this way people can see how it would work, and I don't have to wait. Also this is more fun.
 
 # Is this safe?
 

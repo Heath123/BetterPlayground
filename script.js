@@ -23,7 +23,6 @@ body.betterplayground-using-code-model .completions-container * {
     font-size: 14px!important;
     font-weight: normal;
 }
-
 body.betterplayground-using-code-model .public-DraftEditor-content {
     padding-left: 59px;
     padding-top: 10px;
@@ -35,8 +34,8 @@ const oldAppendChild = document.head.appendChild
 
 // Ugly way to patch the script by changing it when it's loaded
 document.head.appendChild = function(child) {
-    // This regex detects the budle containing the main code
-    const matches = child.src && child.src.match(/^https:\/\/openaiapi-site\.azureedge\.net\/public-assets\/d\/[0-9a-f]*\/static\/js\/10\.[0-9a-f]*\.chunk\.js$/)
+    // This regex detects the bundle containing the main code
+    const matches = child.src && child.src.match(/^https:\/\/openaiapi-site\.azureedge\.net\/public-assets\/d\/[0-9a-f]*\/static\/js\/9\.[0-9a-f]*\.chunk\.js$/)
     if (child.tagName === "SCRIPT" && matches) {
         // Use the GreaseMonkey xmlHttpRequest object to bypass CORS while fetching the script
         GM.xmlHttpRequest({
@@ -52,12 +51,12 @@ document.head.appendChild = function(child) {
                 scriptText = scriptText.replace("showFeedbackButtons:!1},a}",
                                                 "showFeedbackButtons:!1},window.globalThing=a,a}")
                 // Tell the logic that hides "Show probablilities" option that we are never using a Codex model so it is never hidden
-                scriptText = scriptText.replace("var l=Object(Q.d)(e.engine.value);",
+                scriptText = scriptText.replace("var l=Object(I.d)(e.engine.value);",
                                                 "var l=false;")
                 // Make it not use a code editor when "Show probabilities" is on because the code editor doesn't support it
                 // Still provide an override to get the original value from this script when needed
-                scriptText = scriptText.replace("a.isCodeEditor=function(){return Object(Q.d)(a.state.modelParameters.engine.value)}",
-                                                "a.isCodeEditor=function(getOrigValue){if(!getOrigValue&&a.state.probsType!==null) return false;return Object(Q.d)(a.state.modelParameters.engine.value)}")
+                scriptText = scriptText.replace("a.isCodeEditor=function(){return Object(I.d)(a.state.modelParameters.engine.value)}",
+                                                "a.isCodeEditor=function(getOrigValue){if(!getOrigValue&&a.state.probsType!==null) return false;return Object(I.d)(a.state.modelParameters.engine.value)}")
                 // Preserve the text when enabling "Show probabilities" forces the code editor off
                 scriptText = scriptText.replace("a.updateProbsType=function(e){",
                                                 "a.updateProbsType=function(e){a.previousEditorText = a.getEditorText();a.setIsChanged();")
